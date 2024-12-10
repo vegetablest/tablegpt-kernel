@@ -66,8 +66,8 @@ omit = [
 ]
 
 [tool.coverage.paths]
-tablegpt_kernel = ["src/tablegpt_kernel", "*/tablegpt-kernel/src/tablegpt_kernel"]
-tests = ["tests", "*/tablegpt-kernel/tests"]
+tablegpt_kernel = ["src/tablegpt_kernel"]
+tests = ["tests"]
 
 [tool.coverage.report]
 exclude_lines = [

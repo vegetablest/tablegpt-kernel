@@ -34,4 +34,3 @@ class CustomHook(BuildHookInterface):
                     print("Custom logo files not found. Default logos will be used.")
 
             KernelSpecManager().install_kernel_spec(td, 'tablegpt', user=False, prefix=prefix)
-
