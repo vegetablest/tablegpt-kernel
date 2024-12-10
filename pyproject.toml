@@ -1,0 +1,84 @@
+[build-system]
+requires = [
+  "hatchling",
+  "ipykernel"
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "tablegpt-kernel"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+keywords = []
+authors = [
+  { name = "Aofeng Su", email = "saf@zjuici.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+    "ipykernel",
+    "jupyter_client",
+]
+
+[project.urls]
+Issues = "https://github.com/vegetablest/tablegpt-kernel/issues"
+Source = "https://github.com/vegetablest/tablegpt-kernel"
+
+# Used to call hatch_build.py
+[tool.hatch.build.hooks.custom]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/tablegpt_kernel",
+]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"data_kernelspec/share" = "share"
+
+[tool.hatch.version]
+path = "src/tablegpt_kernel/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/tablegpt_kernel tests}"
+
+[tool.coverage.run]
+source_pkgs = ["tablegpt_kernel", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/tablegpt_kernel/__about__.py",
+]
+
+[tool.coverage.paths]
+tablegpt_kernel = ["src/tablegpt_kernel", "*/tablegpt-kernel/src/tablegpt_kernel"]
+tests = ["tests", "*/tablegpt-kernel/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+exclude = [
+  "hatch_build.py"
+]
+# Allow lines to be as long as 120.
+line-length = 120
