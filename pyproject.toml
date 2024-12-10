@@ -32,6 +32,7 @@ dependencies = [
 ]
 
 [project.urls]
+Documentation = "https://github.com/vegetablest/tablegpt-kernel#readme"
 Issues = "https://github.com/vegetablest/tablegpt-kernel/issues"
 Source = "https://github.com/vegetablest/tablegpt-kernel"
 
