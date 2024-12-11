@@ -15,11 +15,6 @@ class TablegptKernel(Kernel):
         cell_meta=None,
         cell_id=None,
     ):
-        if not silent:
-            # TODO: Implement safe execution
-            stream_content = {"name": "stdout", "text": code + "\n"}
-            self.send_response(self.iopub_socket, "stream", stream_content)
-
         return await super().do_execute(
             code,
             silent,
